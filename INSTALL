@@ -1,0 +1,62 @@
+INSTALLATION NOTES FOR CAMS
+
+libxdrfile Preparation Step:
+--------------------------------------------------------------------------------------
+
+Before compiling CAMS, we need to place a GROMACS library (libxdrfile.a) in the 'build'
+directory of the CAMS distribution. To acquire the files necessary to compile the 
+library, enter the following command (within the CAMS directory is fine):
+
+	git clone git://git.gromacs.org/libxdrfile.git
+
+Switch to the 'libxdrfile' directory:
+
+	cd libxdrfile
+
+Within the 'libxdrfile' directory, run the following six commands in sequence (i-vi):
+
+i.	aclocal
+ii.	autoconf
+iii.	autoheader
+iv.	automake --add-missing
+v.	./configure
+vi.	make
+
+Switch to the 'src' directory within 'libxdrfile':
+
+	cd src
+
+Create a static version of the library:
+
+	libtool -static -o libxdrfile.a xdrfile.o xdrfile_trr.o xdrfile_xtc.o
+
+Copy the static library 'libxdrfile.a' to the 'build' directory within the CAMS
+distribution directory. If you placed the 'libxdrfile' distribution within the 
+CAMS distribution directory, then type:
+
+	cp libxdrfile.a ../../build/
+
+Compiling CAMS Step:
+--------------------------------------------------------------------------------------
+
+Compiling CAMS at this point should be straight-forward. First Enter the build 
+directory with the CAMS distribution:
+
+	cd build
+
+Make sure 'libxdrfile.a' is inside the directory (list the contents of the directory 
+to be sure)! There are two simple compile scripts in the 'build' directory. The script 
+'compile2.sh' uses GNU compilers (g++) and assumes all necessary paths are preset by 
+the user. 'compile2_intel.sh" uses Intel compilers (icpc) and also assumes all 
+necessary paths are preset by the user. To compile the code, type:
+
+	./compile2.sh
+
+within the build directory. If everything is successful, the executable 'stress_gnu.exe'
+should now be in the 'build' directory. To compile using Intel compilers, type:
+
+	./compile2_intel.sh
+
+and you should see the executable 'stress_intel.exe' in the 'build' directory.
+
+
