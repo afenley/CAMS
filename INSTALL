@@ -26,7 +26,11 @@ Switch to the 'src' directory within 'libxdrfile':
 
 	cd src
 
-Create a static version of the library:
+Create a static version of the library (LINUX):
+
+	ar rcs libxdrfile.a xdrfile.o xdrfile_trr.o xdrfile_xtc.o
+
+Create a static version of the library (MAC OSX):
 
 	libtool -static -o libxdrfile.a xdrfile.o xdrfile_trr.o xdrfile_xtc.o
 
