@@ -1,5 +1,10 @@
 INSTALLATION NOTES FOR CAMS
 
+The CAMS software package relies on the GROMACS utility software 'gmxdump' when 
+parsing a properly formatted GROMACS tpr file. Therefore, make sure that the 
+PATH environment variable points to an installation of GROMACS (or wherever a 
+local copy of 'gmxdump' is installed).
+
 libxdrfile Preparation Step:
 --------------------------------------------------------------------------------------
 
@@ -26,7 +31,11 @@ Switch to the 'src' directory within 'libxdrfile':
 
 	cd src
 
-Create a static version of the library:
+Create a static version of the library (LINUX):
+
+	ar rcs libxdrfile.a xdrfile.o xdrfile_trr.o xdrfile_xtc.o
+
+Create a static version of the library (MAC OSX):
 
 	libtool -static -o libxdrfile.a xdrfile.o xdrfile_trr.o xdrfile_xtc.o
 

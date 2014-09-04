@@ -76,7 +76,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 msfsolvent  = mol->msfsolvent;
                 msfkinetic  = mol->msfkinetic;
 	}
-	/* computing the average stress of the entpre trajectory by dividing the number 
+	/* computing the average stress of the entire trajectory by dividing the number 
 	   of frames
 	*/
         for(i=0;i<indexgroupcount;i++)
@@ -108,7 +108,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
 	/* averages: */
 	strcpy(filename,outfilename);strcat(filename,"_atomavg.pdb");
 	outfile = fopen(filename,"w");
-	fprintf(outfile,"REMARK    STRESS PROGRAM DEVELOPED BY HARI S. MUDDANA AND ANDREW T. FENLEY. PLEASE CITE.\n");
+	fprintf(outfile,"REMARK    CAMS DEVELOPED BY HARI S. MUDDANA AND ANDREW T. FENLEY. PLEASE CITE.\n");
         for(i=0;i<indexgroupcount;i++)
         {
 		fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,avgstress[i]);
@@ -119,7 +119,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
 	/* mean square fluctuations */
         strcpy(filename,outfilename);strcat(filename,"_atommsf.pdb");
         outfile = fopen(filename,"w");
-        fprintf(outfile,"REMARK    STRESS PROGRAM DEVELOPED BY HARI S. MUDDANA AND ANDREW T. FENLEY. PLEASE CITE.\n");
+        fprintf(outfile,"REMARK    CAMS DEVELOPED BY HARI S. MUDDANA AND ANDREW T. FENLEY. PLEASE CITE.\n");
         for(i=0;i<indexgroupcount;i++)
         {
                 fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,msfstress[i]);
@@ -133,7 +133,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
 		/*bond*/
 		strcpy(filename,outfilename);strcat(filename,"_bond_atomavg.pdb");
 		outfile = fopen(filename,"w");
-		fprintf(outfile,"REMARK    BOND STRESS: ATOM AVG. PLEASE CITE JCC PAPER.\n");
+		fprintf(outfile,"REMARK    BOND STRESS: ATOM AVG. PLEASE CITE PLOS ONE PAPER.\n");
 		for(i=0;i<indexgroupcount;i++)
 		{
 			fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,avgbond[i]);
@@ -144,7 +144,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
         	/*bond msf*/
         	strcpy(filename,outfilename);strcat(filename,"_bond_atommsf.pdb");
         	outfile = fopen(filename,"w");
-        	fprintf(outfile,"REMARK    BOND STRESS: ATOM MSF. PLEASE CITE JCC PAPER\n");
+        	fprintf(outfile,"REMARK    BOND STRESS: ATOM MSF. PLEASE CITE PLOS ONE PAPER\n");
         	for(i=0;i<indexgroupcount;i++)
         	{
                 	fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,msfbond[i]);
@@ -155,7 +155,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*angle*/
                 strcpy(filename,outfilename);strcat(filename,"_angle_atomavg.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    ANGLE STRESS: ATOM AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outfile,"REMARK    ANGLE STRESS: ATOM AVG. PLEASE CITE PLOS ONE PAPER.\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,avgangle[i]);
@@ -166,7 +166,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*angle msf*/
                 strcpy(filename,outfilename);strcat(filename,"_angle_atommsf.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    ANGLE STRESS: ATOM MSF. PLEASE CITE JCC PAPER\n");
+                fprintf(outfile,"REMARK    ANGLE STRESS: ATOM MSF. PLEASE CITE PLOS ONE PAPER\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,msfangle[i]);
@@ -177,7 +177,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*dihedral*/
                 strcpy(filename,outfilename);strcat(filename,"_dihedral_atomavg.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    DIHEDRAL STRESS: ATOM AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outfile,"REMARK    DIHEDRAL STRESS: ATOM AVG. PLEASE CITE PLOS ONE PAPER.\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,avgdihedral[i]);
@@ -188,7 +188,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*dihedral msf*/
                 strcpy(filename,outfilename);strcat(filename,"_dihedral_atommsf.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    DIHEDRAL STRESS: ATOM MSF. PLEASE CITE JCC PAPER\n");
+                fprintf(outfile,"REMARK    DIHEDRAL STRESS: ATOM MSF. PLEASE CITE PLOS ONE PAPER\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,msfdihedral[i]);
@@ -199,7 +199,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*vdw*/
                 strcpy(filename,outfilename);strcat(filename,"_vdw_atomavg.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    vdW STRESS: ATOM AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outfile,"REMARK    vdW STRESS: ATOM AVG. PLEASE CITE PLOS ONE PAPER.\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,avgvdw[i]);
@@ -210,7 +210,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*vdw msf*/
                 strcpy(filename,outfilename);strcat(filename,"_vdw_atommsf.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    vdW STRESS: ATOM MSF. PLEASE CITE JCC PAPER\n");
+                fprintf(outfile,"REMARK    vdW STRESS: ATOM MSF. PLEASE CITE PLOS ONE PAPER\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,msfvdw[i]);
@@ -221,7 +221,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*qq*/
                 strcpy(filename,outfilename);strcat(filename,"_qq_atomavg.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    QQ STRESS: ATOM AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outfile,"REMARK    QQ STRESS: ATOM AVG. PLEASE CITE PLOS ONE PAPER.\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,avgqq[i]);
@@ -232,7 +232,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*qq msf*/
                 strcpy(filename,outfilename);strcat(filename,"_qq_atommsf.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    QQ STRESS: ATOM MSF. PLEASE CITE JCC PAPER\n");
+                fprintf(outfile,"REMARK    QQ STRESS: ATOM MSF. PLEASE CITE PLOS ONE PAPER\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,msfqq[i]);
@@ -243,7 +243,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*solvent*/
                 strcpy(filename,outfilename);strcat(filename,"_solvent_atomavg.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    SOLVENT STRESS: ATOM AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outfile,"REMARK    SOLVENT STRESS: ATOM AVG. PLEASE CITE PLOS ONE PAPER.\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,avgsolvent[i]);
@@ -254,7 +254,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*solvent msf*/
                 strcpy(filename,outfilename);strcat(filename,"_solvent_atommsf.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    SOLVENT STRESS: ATOM MSF. PLEASE CITE JCC PAPER\n");
+                fprintf(outfile,"REMARK    SOLVENT STRESS: ATOM MSF. PLEASE CITE PLOS ONE PAPER\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,msfsolvent[i]);
@@ -265,7 +265,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*kinetic*/
                 strcpy(filename,outfilename);strcat(filename,"_kinetic_atomavg.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    KINETIC STRESS: ATOM AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outfile,"REMARK    KINETIC STRESS: ATOM AVG. PLEASE CITE PLOS ONE PAPER.\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,avgkinetic[i]);
@@ -276,7 +276,7 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
                 /*kinetic msf*/
                 strcpy(filename,outfilename);strcat(filename,"_kinetic_atommsf.pdb");
                 outfile = fopen(filename,"w");
-                fprintf(outfile,"REMARK    KINETIC STRESS: ATOM MSF. PLEASE CITE JCC PAPER\n");
+                fprintf(outfile,"REMARK    KINETIC STRESS: ATOM MSF. PLEASE CITE PLOS ONE PAPER\n");
                 for(i=0;i<indexgroupcount;i++)
                 {
                         fprintf(outfile,"ATOM  %5d %4s %-4sX%4d    %8.3f%8.3f%8.3f%6.2f %9.6f  \n",i+1,mol->name[i],mol->resname[i],1+mol->resnr[i],mol->tprcrd[i][0],mol->tprcrd[i][1],mol->tprcrd[i][2],1.0,msfkinetic[i]);
@@ -291,10 +291,10 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
 		
 	strcpy(filename,outfilename);strcat(filename,"_resavg.pdb");
 	outfile1 = fopen(filename,"w");
-	fprintf(outfile1,"REMARK    STRESS PROGRAM DEVELOPED BY HARI S. MUDDANA AND ANDREW T. FENLEY. PLEASE CITE.\n");
+	fprintf(outfile1,"REMARK    CAMS DEVELOPED BY HARI S. MUDDANA AND ANDREW T. FENLEY. PLEASE CITE PLOS ONE PAPER.\n");
 	strcpy(filename,outfilename);strcat(filename,"_resmsf.pdb");
 	outfile2 = fopen(filename,"w");
-	fprintf(outfile2,"REMARK    STRESS PROGRAM DEVELOPED BY HARI S. MUDDANA AND ANDREW T. FENLEY. PLEASE CITE.\n");
+	fprintf(outfile2,"REMARK    CAMS DEVELOPED BY HARI S. MUDDANA AND ANDREW T. FENLEY. PLEASE CITE PLOS ONE PAPER.\n");
 
         fluctuation = 0.0;
         meanstress = 0.0;
@@ -342,59 +342,59 @@ void writestat(char outfilename[], struct topology *mol, int numframes)
 	{
 		strcpy(filename,outfilename);strcat(filename,"_bond_resavg.pdb");
 		outbond1 = fopen(filename,"w");
-		fprintf(outbond1,"REMARK    BOND STRESS: RESIDUE AVG. PLEASE CITE JCC PAPER.\n");
+		fprintf(outbond1,"REMARK    BOND STRESS: RESIDUE AVG. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_angle_resavg.pdb");
                 outangle1 = fopen(filename,"w");
-                fprintf(outangle1,"REMARK    ANGLE STRESS: RESIDUE AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outangle1,"REMARK    ANGLE STRESS: RESIDUE AVG. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_dihedral_resavg.pdb");
                 outdihedral1 = fopen(filename,"w");
-                fprintf(outdihedral1,"REMARK    DIHEDRAL STRESS: RESIDUE AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outdihedral1,"REMARK    DIHEDRAL STRESS: RESIDUE AVG. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_vdw_resavg.pdb");
                 outvdw1 = fopen(filename,"w");
-                fprintf(outvdw1,"REMARK    vdW STRESS: RESIDUE AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outvdw1,"REMARK    vdW STRESS: RESIDUE AVG. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_qq_resavg.pdb");
                 outqq1 = fopen(filename,"w");
-                fprintf(outqq1,"REMARK    QQ STRESS: RESIDUE AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outqq1,"REMARK    QQ STRESS: RESIDUE AVG. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_solvent_resavg.pdb");
                 outsolvent1 = fopen(filename,"w");
-                fprintf(outsolvent1,"REMARK    SOLVENT STRESS: RESIDUE AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outsolvent1,"REMARK    SOLVENT STRESS: RESIDUE AVG. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_kinetic_resavg.pdb");
                 outkinetic1 = fopen(filename,"w");
-                fprintf(outkinetic1,"REMARK    KINETIC STRESS: RESIDUE AVG. PLEASE CITE JCC PAPER.\n");
+                fprintf(outkinetic1,"REMARK    KINETIC STRESS: RESIDUE AVG. PLEASE CITE PLOS ONE PAPER.\n");
 		/* placeholder for MSF splits later: */
 		strcpy(filename,outfilename);strcat(filename,"_bond_resmsf.pdb");
 		outbond2 = fopen(filename,"w");
-		fprintf(outbond2,"REMARK    BOND STRESS: RESIDUE MSF. PLEASE CITE JCC PAPER.\n");
+		fprintf(outbond2,"REMARK    BOND STRESS: RESIDUE MSF. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_angle_resmsf.pdb");
                 outangle2 = fopen(filename,"w");
-                fprintf(outangle2,"REMARK    ANGLE STRESS: RESIDUE MSF. PLEASE CITE JCC PAPER.\n");
+                fprintf(outangle2,"REMARK    ANGLE STRESS: RESIDUE MSF. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_dihedral_resmsf.pdb");
                 outdihedral2 = fopen(filename,"w");
-                fprintf(outdihedral2,"REMARK    DIHEDRAL STRESS: RESIDUE MSF. PLEASE CITE JCC PAPER.\n");
+                fprintf(outdihedral2,"REMARK    DIHEDRAL STRESS: RESIDUE MSF. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_vdw_resmsf.pdb");
                 outvdw2 = fopen(filename,"w");
-                fprintf(outvdw2,"REMARK    vdW STRESS: RESIDUE MSF. PLEASE CITE JCC PAPER.\n");
+                fprintf(outvdw2,"REMARK    vdW STRESS: RESIDUE MSF. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_qq_resmsf.pdb");
                 outqq2 = fopen(filename,"w");
-                fprintf(outqq2,"REMARK    QQ STRESS: RESIDUE MSF. PLEASE CITE JCC PAPER.\n");
+                fprintf(outqq2,"REMARK    QQ STRESS: RESIDUE MSF. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_solvent_resmsf.pdb");
                 outsolvent2 = fopen(filename,"w");
-                fprintf(outsolvent2,"REMARK    SOLVENT STRESS: RESIDUE MSF. PLEASE CITE JCC PAPER.\n");
+                fprintf(outsolvent2,"REMARK    SOLVENT STRESS: RESIDUE MSF. PLEASE CITE PLOS ONE PAPER.\n");
 
                 strcpy(filename,outfilename);strcat(filename,"_kinetic_resmsf.pdb");
                 outkinetic2 = fopen(filename,"w");
-                fprintf(outkinetic2,"REMARK    KINETIC STRESS: RESIDUE MSF. PLEASE CITE JCC PAPER.\n");
+                fprintf(outkinetic2,"REMARK    KINETIC STRESS: RESIDUE MSF. PLEASE CITE PLOS ONE PAPER.\n");
 
 		meanbond     = 0.0;
 		meanangle    = 0.0;
