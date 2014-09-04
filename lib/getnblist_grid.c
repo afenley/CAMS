@@ -79,10 +79,13 @@ void getnblist_grid(struct topology *mol)
 		ncount[i]  = 0;
 	}
 	
-	/* compute the size of the box
+	/* compute the size of the box; initialize min/max 
+ 	   based on first atom -ATF
 	 */
-	xmin = 10000.0; xmax = -10000.0; ymin = 10000.0; ymax = -10000.0; zmin = 10000.0; zmax = -10000.0;
-	for(i=0;i<numatoms;i++)
+        xmin = crd[0][0]; xmax = crd[0][0]; ymin = crd[0][1]; ymax = crd[0][1]; zmin = crd[0][2]; zmax = crd[0][2];        
+//	xmin = 10000.0; xmax = -10000.0; ymin = 10000.0; ymax = -10000.0; zmin = 10000.0; zmax = -10000.0; 
+//	for(i=0;i<numatoms;i++)
+	for(i=1;i<numatoms;i++)
 	{
 		x = crd[i][0];
 		y = crd[i][1];
@@ -92,17 +95,16 @@ void getnblist_grid(struct topology *mol)
 		else if(x > xmax) { xmax = x;}
 		if(y < ymin) { ymin = y;}
 		else if(y > ymax) { ymax = y;}
+		//if(y > ymax) { ymax = y;}
 		if(z < zmin) { zmin = z;}
 		else if(z > zmax) { zmax = z;}
 	}
 	xmin = xmin - 5.0; xmax = xmax + 5.0;
 	ymin = ymin - 5.0; ymax = ymax + 5.0;
 	zmin = zmin - 5.0; zmax = zmax + 5.0;
-
 	xsize = xmax-xmin;
 	ysize = ymax-ymin;
 	zsize = zmax-zmin;
-
 	numxbins = int(floor((xsize+xsize)*I_NBCUTOFF));
 	numybins = int(floor((ysize+ysize)*I_NBCUTOFF));
 	numzbins = int(floor((zsize+zsize)*I_NBCUTOFF));
@@ -116,27 +118,22 @@ void getnblist_grid(struct topology *mol)
 	dz = zsize/numzbins;
 
 	numcells = (numxbins)*(numybins)*(numzbins);
-
 	grid = (int**) malloc(numcells*sizeof(int*));
 	gridcount = (int*) malloc(numcells*sizeof(int));
-
 	for(i=0;i<numcells;i++)
 	{
 		grid[i] = (int*) malloc(1000*sizeof(int)); //TYPEDEF 1000 atoms later: 5x5A^2
 		gridcount[i] = 0;
 	}
-
 	for(i=0;i<numatoms;i++)
 	{
 		xbin = int(floor((crd[i][0] - xmin)/dx));
 		ybin = int(floor((crd[i][1] - ymin)/dy));
 		zbin = int(floor((crd[i][2] - zmin)/dz));
-
 		gridindex = zbin*numxbins*numybins + ybin*numxbins + xbin;
 		grid[gridindex][gridcount[gridindex]] = i;
 		gridcount[gridindex] = gridcount[gridindex] + 1;
 	}
-
 	for(xbin=0;xbin<numxbins;xbin++)
 	{
 		for(ybin=0;ybin<numybins;ybin++)
