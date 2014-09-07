@@ -65,7 +65,7 @@ void nbstress(struct topology *mol)
 			stressij         = -(forcefield[ljtype][1])*rij6*rij6 + (forcefield[ljtype][0])*rij6;
 			vdwstress[atomi] = vdwstress[atomi] - stressij;// negative sign to represent hydrostatic pressure
 
-			stressij        = -332.00*chargeij[atomi][atomj]*sqrt(rij2);
+			stressij        = -332.06*chargeij[atomi][atomj]*sqrt(rij2);
 			qqstress[atomi] = qqstress[atomi] - stressij;// negative sign to represent hydrostatic pressure
 			
 		}
