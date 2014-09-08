@@ -1,0 +1,39 @@
+; 3body.top created by rdparm2gmx.pl Wed Sep  3 16:45:36 PDT 2014
+
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+1               2               yes             0.5     0.8333
+
+[ atomtypes ]
+;name  bond_type    mass    charge   ptype          sigma      epsilon
+CT            CT      0.0000  0.0000  A   0.00000e+00  0.00000e+00
+
+[ moleculetype ]
+; Name            nrexcl
+solute             3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr     charge       mass  typeB    chargeB
+     1         CT      1    TST      C      1    0.00000  12.000000
+     2         CT      1    TST      C      2    0.00000  12.000000
+     3         CT      1    TST      C      3    0.00000  12.000000
+
+[ bonds ]
+;  ai    aj funct  r  k
+1           2     1  1.5350e-01  2.5363e+05
+2           3     1  1.5350e-01  2.5363e+05
+
+[ pairs ]
+;  ai    aj funct
+
+[ angles ]
+;  ai    aj    ak funct  theta   cth
+1           2      3     1  1.1063e+02  5.2894e+02
+
+
+[ system ]
+3 system
+
+[ molecules ]
+; Compound        nmols
+solute            1

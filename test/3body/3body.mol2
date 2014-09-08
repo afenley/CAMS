@@ -1,0 +1,13 @@
+@<TRIPOS>MOLECULE
+TST
+ 3 2 0 0 0
+SMALL
+GASTEIGER
+
+@<TRIPOS>ATOM
+      1 C           0.0000    0.0000    0.0000 CT      1  TST         0.0000
+      2 C           1.4818   -0.2656    0.0675 CT      1  TST         0.0000
+      3 C           2.2638    1.0241   -0.0926 CT      1  TST         0.0000
+@<TRIPOS>BOND
+     1     1     2    1
+     2     2     3    1
