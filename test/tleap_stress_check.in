@@ -1,0 +1,5 @@
+source leaprc.gaff
+loadamberparams test.frcmod
+TST = loadmol2 5bodyQ.mol2
+saveamberparm TST 5bodyQ.prmtop 5bodyQ.rst7
+quit

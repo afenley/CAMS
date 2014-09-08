@@ -1,0 +1,36 @@
+remark goes here
+MASS
+CT 12.01         0.360               C-Test
+CQ 12.01         0.360               C-Test Nonbonded
+CR 12.01         0.360               C-Test Nonbonded
+
+BOND
+CT-CT  303.1    1.5350       SOURCE1   14664    0.0048
+CT-CQ  303.1    1.5350       SOURCE1   14664    0.0048
+CT-CR  303.1    1.5350       SOURCE1   14664    0.0048
+
+ANGLE
+CT-CT-CT   63.21      110.63    SOURCE3          507    2.7845 
+CT-CT-CQ   63.21      110.63    SOURCE3          507    2.7845
+CT-CT-CR   63.21      110.63    SOURCE3          507    2.7845
+
+DIHE
+CT-CT-CT-CT   1    0.18          0.0            -3.         Junmei et al, 1999
+CT-CT-CT-CT   1    0.25        180.0            -2.         Junmei et al, 1999
+CT-CT-CT-CT   1    0.20        180.0             1.         Junmei et al, 1999
+CT-CT-CT-CQ   1    0.18          0.0            -3.         Junmei et al, 1999
+CT-CT-CT-CQ   1    0.25        180.0            -2.         Junmei et al, 1999
+CT-CT-CT-CQ   1    0.20        180.0             1.         Junmei et al, 1999
+CQ-CT-CT-CQ   1    0.18          0.0            -3.         Junmei et al, 1999
+CQ-CT-CT-CQ   1    0.25        180.0            -2.         Junmei et al, 1999
+CQ-CT-CT-CQ   1    0.20        180.0             1.         Junmei et al, 1999
+CT-CT-CT-CR   1    0.18          0.0            -3.         Junmei et al, 1999
+CT-CT-CT-CR   1    0.25        180.0            -2.         Junmei et al, 1999
+CT-CT-CT-CR   1    0.20        180.0             1.         Junmei et al, 1999
+
+IMPROPER
+
+NONBON
+  CT          0.0000  0.0000             OPLS
+  CQ          1.9080  0.0860             OPLS
+  CR          1.7080  0.1060             OPLS
