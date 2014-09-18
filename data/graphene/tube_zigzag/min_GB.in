@@ -1,0 +1,11 @@
+Initial minimization
+ &cntrl
+  imin=1,
+  maxcyc=5000,
+  ncyc=1000,
+  cut=999,
+  ntb=0,
+  igb=5,
+  saltcon=0.00,
+  rgbmax=999.
+ /
